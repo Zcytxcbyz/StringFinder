@@ -41,6 +41,7 @@
             this.ch_index = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cb_encoding = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.cb_QuickSearch = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // Dirty_textBox
@@ -163,7 +164,7 @@
             "Unicode",
             "UTF7",
             "UTF32"});
-            this.cb_encoding.Location = new System.Drawing.Point(178, 67);
+            this.cb_encoding.Location = new System.Drawing.Point(262, 67);
             this.cb_encoding.Name = "cb_encoding";
             this.cb_encoding.Size = new System.Drawing.Size(74, 20);
             this.cb_encoding.TabIndex = 9;
@@ -171,17 +172,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(143, 70);
+            this.label1.Location = new System.Drawing.Point(227, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 10;
             this.label1.Text = "编码";
+            // 
+            // cb_QuickSearch
+            // 
+            this.cb_QuickSearch.AutoSize = true;
+            this.cb_QuickSearch.Checked = true;
+            this.cb_QuickSearch.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_QuickSearch.Location = new System.Drawing.Point(143, 69);
+            this.cb_QuickSearch.Name = "cb_QuickSearch";
+            this.cb_QuickSearch.Size = new System.Drawing.Size(72, 16);
+            this.cb_QuickSearch.TabIndex = 11;
+            this.cb_QuickSearch.Text = "快速查找";
+            this.cb_QuickSearch.UseVisualStyleBackColor = true;
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.cb_QuickSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cb_encoding);
             this.Controls.Add(this.listView_result);
@@ -193,6 +207,7 @@
             this.Controls.Add(this.Directory_Label);
             this.Controls.Add(this.Dirty_textBox);
             this.Name = "mainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "字符串查找器";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load);
@@ -216,6 +231,7 @@
         private System.Windows.Forms.ComboBox cb_encoding;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ColumnHeader ch_index;
+        private System.Windows.Forms.CheckBox cb_QuickSearch;
     }
 }
 

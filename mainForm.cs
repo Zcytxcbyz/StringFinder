@@ -16,21 +16,11 @@ namespace StringFinder
 {
     public partial class mainForm : Form
     {
-        private class DataItem
-        {
-            public string Item, File, Index;
-            public DataItem(string Item, string File, string Index)
-            {
-                this.Item = Item;
-                this.File = File;
-                this.Index = Index;
-            }
-        }
         private List<Task> taskList = new List<Task>();
-        private List<DataItem> dataItems = new List<DataItem>();
         private ToolTip mainToolTip = new ToolTip();
         private ListViewItem.ListViewSubItem PrevListViewItem = null;
         private double chItemWidthPro, chFileWidthPro, chIndexWidthPro;
+        private delegate void AddData(ListViewItem lvi);
         private static class FinderParams
         {
             public static Encoding encoding;
@@ -76,69 +66,99 @@ namespace StringFinder
             FinderParams.regexOptions = IgnoreCase.Checked ? RegexOptions.IgnoreCase : RegexOptions.None;
             FinderParams.searchText = SearchBox.Text;
             taskList.Clear();
-            dataItems.Clear();
+            listView_result.Items.Clear();
+            if (!Directory.Exists(path))
+            {
+                MessageBox.Show("未能找到指定路径。", this.Text, MessageBoxButtons.OK);
+                return;
+            }
+            if (!cb_QuickSearch.Checked)
+            {
+                listView_result.Items.Clear();
+                Task.Factory.StartNew(StringFinderDeeply, path);
+                return;
+            }
             Task task = new Task(StringFinderRegex, path);
             task.Start();
             taskList.Add(task);
-            FrmProgressBar frmProgressBar = new FrmProgressBar();
-            Task updateTask = Task.WhenAll(taskList).ContinueWith((_) =>
-              {
-                  Invoke(new Action(() => { listView_result.Items.Clear(); }));
-                  foreach (DataItem item in dataItems)
-                  {
-                      if (item == null) continue;
-                      ListViewItem lvi = new ListViewItem(item.Item);
-                      lvi.SubItems.Add(item.File);
-                      lvi.SubItems.Add(item.Index);
-                      Invoke(new Action(() => { listView_result.Items.Add(lvi); }));
-                  }
-                  if (frmProgressBar.Visible) Invoke(new Action(() => { frmProgressBar.Close(); }));
-              });       
-            System.Timers.Timer timer = new System.Timers.Timer(2000) { AutoReset = false };
-            timer.Elapsed += new ElapsedEventHandler((object sender, ElapsedEventArgs e) => 
+            Task.Factory.StartNew(() =>
             {
-                if (!updateTask.IsCompleted)
+                while (taskList.Exists(t => !t.IsCompleted))
                 {
-                    Invoke(new Action(() =>{frmProgressBar.ShowDialog(this);}));
+                    Task.WaitAll(taskList.ToArray());
                 }
             });
-            timer.Start();
+            Task.Factory.StartNew(() =>
+            {
+                while (taskList.Exists(t => !t.IsCompleted))
+                {
+                    taskList.RemoveAll(t => t.IsCompleted);
+                    Thread.Sleep(2000);
+                }
+            });
+        }
+
+        private void AddDataToView(ListViewItem lvi)
+        {
+            listView_result.Items.Add(lvi);
+        }
+
+        private void StringFinderDeeply(object path)
+        {
+            string[] fileList = Directory.GetFiles((string)path);
+            string[] folderList = Directory.GetDirectories((string)path);
+            foreach (string file in fileList)
+            {
+                FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read);
+                StreamReader sr = new StreamReader(fs, FinderParams.encoding);
+                string content = sr.ReadToEnd();
+                sr.Close();
+                fs.Close();
+                MatchCollection mc = Regex.Matches(content, FinderParams.searchText, FinderParams.regexOptions);
+                foreach (Match m in mc)
+                {
+                    ListViewItem lvi = new ListViewItem(m.Value);
+                    lvi.SubItems.Add(file);
+                    lvi.SubItems.Add(m.Index.ToString());
+                    Invoke(new AddData(AddDataToView), lvi);
+                }
+            }
+            foreach (string folder in folderList)
+            {
+                StringFinderDeeply(folder);
+            }
         }
         private void StringFinderRegex(object path)
         {
-            try
+            string[] fileList = Directory.GetFiles((string)path);
+            string[] folderList = Directory.GetDirectories((string)path);
+            taskList.Add(Task.Factory.StartNew(() =>
             {
-                string[] fileList = Directory.GetFiles((string)path);
-                string[] folderList = Directory.GetDirectories((string)path);
-                Task.Factory.StartNew(() =>
+                foreach (string folder in folderList)
                 {
-                    foreach (string folder in folderList)
-                    {
-                        Task task = new Task(StringFinderRegex, folder);
-                        task.Start();
-                        taskList.Add(task);
-                    }
-                }, TaskCreationOptions.AttachedToParent);
-                foreach (string file in fileList)
-                {
-                    Task.Factory.StartNew(() =>
-                    {
-                        FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read);
-                        StreamReader sr = new StreamReader(fs, FinderParams.encoding);
-                        string content = sr.ReadToEnd();
-                        sr.Close();
-                        fs.Close();
-                        MatchCollection mc = Regex.Matches(content, FinderParams.searchText, FinderParams.regexOptions);
-                        foreach (Match m in mc)
-                        {
-                            dataItems.Add(new DataItem(m.Value, file, m.Index.ToString()));
-                        }
-                    }, TaskCreationOptions.AttachedToParent);
+                    Task task = new Task(StringFinderRegex, folder);
+                    task.Start();
+                    taskList.Add(task);      
                 }
-            }
-            catch (Exception ex)
+            }, TaskCreationOptions.AttachedToParent));
+            foreach (string file in fileList)
             {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK);
+                taskList.Add(Task.Factory.StartNew(() =>
+                {
+                    FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read);
+                    StreamReader sr = new StreamReader(fs, FinderParams.encoding);
+                    string content = sr.ReadToEnd();
+                    sr.Close();
+                    fs.Close();
+                    MatchCollection mc = Regex.Matches(content, FinderParams.searchText, FinderParams.regexOptions);
+                    foreach (Match m in mc)
+                    {
+                        ListViewItem lvi = new ListViewItem(m.Value);
+                        lvi.SubItems.Add(file);
+                        lvi.SubItems.Add(m.Index.ToString());
+                        BeginInvoke(new AddData(AddDataToView), lvi);
+                    }
+                }, TaskCreationOptions.AttachedToParent));
             }
         }
 
