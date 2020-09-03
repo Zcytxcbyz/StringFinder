@@ -187,12 +187,17 @@ namespace StringFinder
                         Clipboard.SetText(row.SubItems[1].Text);
                         
                     });
-                    ToolStripMenuItem openItem = new ToolStripMenuItem("打开");
+                    ToolStripMenuItem openItem = new ToolStripMenuItem("打开文件");
                     openItem.Click += new EventHandler((_, _) =>
                     {
                         System.Diagnostics.Process.Start(row.SubItems[1].Text);
                     });
-                    menuStrip.Items.AddRange(new ToolStripItem[] { copyItem, openItem });
+                    ToolStripMenuItem viewItem = new ToolStripMenuItem("打开文件夹");
+                    viewItem.Click += new EventHandler((_, _) =>
+                    {
+                        System.Diagnostics.Process.Start("explorer.exe", Path.GetDirectoryName(row.SubItems[1].Text));
+                    });
+                    menuStrip.Items.AddRange(new ToolStripItem[] { copyItem, openItem, viewItem });
                     menuStrip.Show((Control)sender,e.Location);
                 }
             }
@@ -209,7 +214,7 @@ namespace StringFinder
             if (cell != null && cell != PrevListViewItem)
             {
                 if (cell.Text != null)
-                    mainToolTip.Show(cell.Text, (Control)sender, e.X + 20, e.Y, 2000);
+                    mainToolTip.Show(cell.Text, (Control)sender, e.X + 20, e.Y + 20, 10000);
                 PrevListViewItem = cell;
             }
             else if(cell != PrevListViewItem)
