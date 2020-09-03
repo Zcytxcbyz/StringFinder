@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
 using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
-using System.Timers;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace StringFinder
 {
@@ -21,6 +17,7 @@ namespace StringFinder
         private ListViewItem.ListViewSubItem PrevListViewItem = null;
         private double chItemWidthPro, chFileWidthPro, chIndexWidthPro;
         private delegate void AddData(ListViewItem lvi);
+        private ComponentResourceManager resources = new ComponentResourceManager(typeof(Properties.Resources));
         private static class FinderParams
         {
             public static Encoding encoding;
@@ -34,17 +31,25 @@ namespace StringFinder
         private delegate void addData(ListViewItem item);
         private void mainForm_Load(object sender, EventArgs e)
         {
-            chItemWidthPro = 0.2;
-            chFileWidthPro = 0.6;
-            chIndexWidthPro = 0.2;
+            chItemWidthPro = Properties.Settings.Default.chItemWidthPro;
+            chFileWidthPro = Properties.Settings.Default.chFileWidthPro;
+            chIndexWidthPro = Properties.Settings.Default.chIndexWidthPro;
             listView_result_SizeChanged(null, null);
-            cb_encoding.SelectedIndex = 0;
+            cb_encoding.SelectedIndex = Properties.Settings.Default.Encoding;
+            this.Size = Properties.Settings.Default.FormSize;
+            if (Properties.Settings.Default.FormLocation != null)
+                this.Location = Properties.Settings.Default.FormLocation;
+            else
+                Properties.Settings.Default.FormLocation = this.Location;
+            this.WindowState = Properties.Settings.Default.FormState;
+            this.LocationChanged += new EventHandler(mainForm_LocationChanged);
+            this.SizeChanged += new EventHandler(mainForm_SizeChanged);
         }
 
         private void Open_Btn_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.Description = "请选择文件夹";
+            fbd.Description = resources.GetString("FolderBrowserDialog.Description");
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 Dirty_textBox.Text = fbd.SelectedPath;
@@ -69,33 +74,41 @@ namespace StringFinder
             listView_result.Items.Clear();
             if (!Directory.Exists(path))
             {
-                MessageBox.Show("未能找到指定路径。", this.Text, MessageBoxButtons.OK);
+                MessageBox.Show(resources.GetString("PathNotFoundException.Message"), this.Text, MessageBoxButtons.OK);
                 return;
             }
             if (!cb_QuickSearch.Checked)
             {
                 listView_result.Items.Clear();
-                Task.Factory.StartNew(StringFinderDeeply, path);
-                return;
+                Task.Factory.StartNew(StringFinderDeeply, path).ContinueWith((_) => 
+                {
+                    taskList.Clear();
+                });
             }
-            Task task = new Task(StringFinderRegex, path);
-            task.Start();
-            taskList.Add(task);
-            Task.Factory.StartNew(() =>
+            else
             {
-                while (taskList.Exists(t => !t.IsCompleted))
+                Task task = new Task(StringFinderRegex, path);
+                task.Start();
+                taskList.Add(task);
+                Task.Factory.StartNew(() =>
                 {
-                    Task.WaitAll(taskList.ToArray());
-                }
-            });
-            Task.Factory.StartNew(() =>
-            {
-                while (taskList.Exists(t => !t.IsCompleted))
+                    while (taskList.Exists(t => !t.IsCompleted))
+                    {
+                        Task.WaitAll(taskList.ToArray());
+                    }
+                }).ContinueWith((_) =>
                 {
-                    taskList.RemoveAll(t => t.IsCompleted);
-                    Thread.Sleep(2000);
-                }
-            });
+                    taskList.Clear();
+                });
+                Task.Factory.StartNew(() =>
+                {
+                    while (taskList.Exists(t => !t.IsCompleted))
+                    {
+                        taskList.RemoveAll(t => t.IsCompleted);
+                        Thread.Sleep(2000);
+                    }
+                });
+            }
         }
 
         private void AddDataToView(ListViewItem lvi)
@@ -181,18 +194,18 @@ namespace StringFinder
                 if (row != null && row.Selected)
                 {
                     ContextMenuStrip menuStrip = new ContextMenuStrip();
-                    ToolStripMenuItem copyItem = new ToolStripMenuItem("复制");
+                    ToolStripMenuItem copyItem = new ToolStripMenuItem(resources.GetString("CopyMenuItem.Text"));
                     copyItem.Click += new EventHandler((_, _) =>
                     {
                         Clipboard.SetText(row.SubItems[1].Text);
                         
                     });
-                    ToolStripMenuItem openItem = new ToolStripMenuItem("打开文件");
+                    ToolStripMenuItem openItem = new ToolStripMenuItem(resources.GetString("OpenMenuItem.Text"));
                     openItem.Click += new EventHandler((_, _) =>
                     {
                         System.Diagnostics.Process.Start(row.SubItems[1].Text);
                     });
-                    ToolStripMenuItem viewItem = new ToolStripMenuItem("打开文件夹");
+                    ToolStripMenuItem viewItem = new ToolStripMenuItem(resources.GetString("ViewMenuItem.Text"));
                     viewItem.Click += new EventHandler((_, _) =>
                     {
                         System.Diagnostics.Process.Start("explorer.exe", Path.GetDirectoryName(row.SubItems[1].Text));
@@ -214,7 +227,7 @@ namespace StringFinder
             if (cell != null && cell != PrevListViewItem)
             {
                 if (cell.Text != null)
-                    mainToolTip.Show(cell.Text, (Control)sender, e.X + 20, e.Y + 20, 10000);
+                    mainToolTip.Show(cell.Text, (Control)sender, e.X, e.Y + 20, 10000);
                 PrevListViewItem = cell;
             }
             else if(cell != PrevListViewItem)
@@ -231,7 +244,28 @@ namespace StringFinder
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Properties.Settings.Default.FormState = this.WindowState;
+            Properties.Settings.Default.Encoding = cb_encoding.SelectedIndex;
+            Properties.Settings.Default.chItemWidthPro = chItemWidthPro;
+            Properties.Settings.Default.chFileWidthPro = chFileWidthPro;
+            Properties.Settings.Default.chIndexWidthPro = chIndexWidthPro;
+            Properties.Settings.Default.Save();
+        }
 
+        private void mainForm_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                Properties.Settings.Default.FormSize = this.Size;
+            }
+        }
+
+        private void mainForm_LocationChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                Properties.Settings.Default.FormLocation = this.Location;
+            }
         }
 
         private void listView_result_DoubleClick(object sender, EventArgs e)

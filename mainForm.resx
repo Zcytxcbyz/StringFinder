@@ -117,4 +117,385 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Dirty_textBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Dirty_textBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="Dirty_textBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 21</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Dirty_textBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Dirty_textBox.Name" xml:space="preserve">
+    <value>Dirty_textBox</value>
+  </data>
+  <data name="&gt;&gt;Dirty_textBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Dirty_textBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Dirty_textBox.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="Directory_Label.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Directory_Label.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Directory_Label.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 14</value>
+  </data>
+  <data name="Directory_Label.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="Directory_Label.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Directory_Label.Text" xml:space="preserve">
+    <value>目录</value>
+  </data>
+  <data name="&gt;&gt;Directory_Label.Name" xml:space="preserve">
+    <value>Directory_Label</value>
+  </data>
+  <data name="&gt;&gt;Directory_Label.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Directory_Label.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Directory_Label.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="Open_Btn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Open_Btn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Open_Btn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>697, 12</value>
+  </data>
+  <data name="Open_Btn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="Open_Btn.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="Open_Btn.Text" xml:space="preserve">
+    <value>打开目录</value>
+  </data>
+  <data name="&gt;&gt;Open_Btn.Name" xml:space="preserve">
+    <value>Open_Btn</value>
+  </data>
+  <data name="&gt;&gt;Open_Btn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Open_Btn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Open_Btn.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="Search_Label.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Search_Label.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Search_Label.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 43</value>
+  </data>
+  <data name="Search_Label.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="Search_Label.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="Search_Label.Text" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="&gt;&gt;Search_Label.Name" xml:space="preserve">
+    <value>Search_Label</value>
+  </data>
+  <data name="&gt;&gt;Search_Label.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Search_Label.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Search_Label.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="SearchBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="SearchBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>53, 41</value>
+  </data>
+  <data name="SearchBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 21</value>
+  </data>
+  <data name="SearchBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;SearchBox.Name" xml:space="preserve">
+    <value>SearchBox</value>
+  </data>
+  <data name="&gt;&gt;SearchBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SearchBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SearchBox.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="SearchButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="SearchButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SearchButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>697, 41</value>
+  </data>
+  <data name="SearchButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="SearchButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="SearchButton.Text" xml:space="preserve">
+    <value>查找</value>
+  </data>
+  <data name="&gt;&gt;SearchButton.Name" xml:space="preserve">
+    <value>SearchButton</value>
+  </data>
+  <data name="&gt;&gt;SearchButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SearchButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SearchButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="listView_result.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="ch_item.Text" xml:space="preserve">
+    <value>匹配项</value>
+  </data>
+  <data name="ch_item.Width" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="ch_file.Text" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="ch_file.Width" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="ch_index.Text" xml:space="preserve">
+    <value>索引</value>
+  </data>
+  <data name="ch_index.Width" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="listView_result.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 93</value>
+  </data>
+  <data name="listView_result.Size" type="System.Drawing.Size, System.Drawing">
+    <value>760, 456</value>
+  </data>
+  <data name="listView_result.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;listView_result.Name" xml:space="preserve">
+    <value>listView_result</value>
+  </data>
+  <data name="&gt;&gt;listView_result.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listView_result.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;listView_result.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cb_encoding.Items" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="cb_encoding.Items1" xml:space="preserve">
+    <value>UTF8</value>
+  </data>
+  <data name="cb_encoding.Items2" xml:space="preserve">
+    <value>ASCII</value>
+  </data>
+  <data name="cb_encoding.Items3" xml:space="preserve">
+    <value>Unicode</value>
+  </data>
+  <data name="cb_encoding.Items4" xml:space="preserve">
+    <value>UTF7</value>
+  </data>
+  <data name="cb_encoding.Items5" xml:space="preserve">
+    <value>UTF32</value>
+  </data>
+  <data name="cb_encoding.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 67</value>
+  </data>
+  <data name="cb_encoding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
+  </data>
+  <data name="cb_encoding.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;cb_encoding.Name" xml:space="preserve">
+    <value>cb_encoding</value>
+  </data>
+  <data name="&gt;&gt;cb_encoding.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cb_encoding.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cb_encoding.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 70</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>编码</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cb_QuickSearch.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cb_QuickSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cb_QuickSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 69</value>
+  </data>
+  <data name="cb_QuickSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="cb_QuickSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="cb_QuickSearch.Text" xml:space="preserve">
+    <value>快速查找</value>
+  </data>
+  <data name="&gt;&gt;cb_QuickSearch.Name" xml:space="preserve">
+    <value>cb_QuickSearch</value>
+  </data>
+  <data name="&gt;&gt;cb_QuickSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cb_QuickSearch.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cb_QuickSearch.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="IgnoreCase.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="IgnoreCase.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="IgnoreCase.Location" type="System.Drawing.Point, System.Drawing">
+    <value>53, 69</value>
+  </data>
+  <data name="IgnoreCase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 16</value>
+  </data>
+  <data name="IgnoreCase.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="IgnoreCase.Text" xml:space="preserve">
+    <value>忽略大小写</value>
+  </data>
+  <data name="&gt;&gt;IgnoreCase.Name" xml:space="preserve">
+    <value>IgnoreCase</value>
+  </data>
+  <data name="&gt;&gt;IgnoreCase.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IgnoreCase.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;IgnoreCase.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>784, 561</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>字符串查找器</value>
+  </data>
+  <data name="&gt;&gt;ch_item.Name" xml:space="preserve">
+    <value>ch_item</value>
+  </data>
+  <data name="&gt;&gt;ch_item.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ch_file.Name" xml:space="preserve">
+    <value>ch_file</value>
+  </data>
+  <data name="&gt;&gt;ch_file.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ch_index.Name" xml:space="preserve">
+    <value>ch_index</value>
+  </data>
+  <data name="&gt;&gt;ch_index.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>mainForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

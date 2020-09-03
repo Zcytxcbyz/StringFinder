@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 
 namespace StringFinder
@@ -19,7 +20,13 @@ namespace StringFinder
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             Exception ex = e.Exception;
-            MessageBox.Show(string.Format("捕获到未处理异常：{0}\r\n异常信息：{1}\r\n异常堆栈：{2}", ex.GetType(), ex.Message, ex.StackTrace), "未处理异常", MessageBoxButtons.OK);
+            DialogResult result = MessageBox.Show(string.Format("Unhandled exception caught：{0}\r\nMessage：{1}\r\nStackTrace：{2}", ex.GetType(), ex.Message, ex.StackTrace), "Unhandled exception", MessageBoxButtons.AbortRetryIgnore);
+            if (result == DialogResult.Abort) Environment.Exit(0);
+            else if (result == DialogResult.Retry)
+            {
+                System.Diagnostics.Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                Environment.Exit(0);
+            }        
         }
     }
 }
