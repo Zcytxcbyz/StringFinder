@@ -31,13 +31,14 @@ namespace StringFinder
         private delegate void addData(ListViewItem item);
         private void mainForm_Load(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Reset();
             chItemWidthPro = Properties.Settings.Default.chItemWidthPro;
             chFileWidthPro = Properties.Settings.Default.chFileWidthPro;
             chIndexWidthPro = Properties.Settings.Default.chIndexWidthPro;
             listView_result_SizeChanged(null, null);
             cb_encoding.SelectedIndex = Properties.Settings.Default.Encoding;
             this.Size = Properties.Settings.Default.FormSize;
-            if (Properties.Settings.Default.FormLocation != null)
+            if (Properties.Settings.Default.FormLocation != new System.Drawing.Point(0, 0)) 
                 this.Location = Properties.Settings.Default.FormLocation;
             else
                 Properties.Settings.Default.FormLocation = this.Location;

@@ -22,7 +22,7 @@ namespace StringFinder.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace StringFinder.Properties {
         ///   返回此类使用的缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StringFinder.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace StringFinder.Properties {
         ///   重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace StringFinder.Properties {
         /// <summary>
         ///   查找类似 复制 的本地化字符串。
         /// </summary>
-        internal static string CopyMenuItem_Text {
+        public static string CopyMenuItem_Text {
             get {
                 return ResourceManager.GetString("CopyMenuItem.Text", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace StringFinder.Properties {
         /// <summary>
         ///   查找类似 请选择文件夹 的本地化字符串。
         /// </summary>
-        internal static string FolderBrowserDialog_Description {
+        public static string FolderBrowserDialog_Description {
             get {
                 return ResourceManager.GetString("FolderBrowserDialog.Description", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace StringFinder.Properties {
         /// <summary>
         ///   查找类似 打开文件 的本地化字符串。
         /// </summary>
-        internal static string OpenMenuItem_Text {
+        public static string OpenMenuItem_Text {
             get {
                 return ResourceManager.GetString("OpenMenuItem.Text", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace StringFinder.Properties {
         /// <summary>
         ///   查找类似 目录不存在。 的本地化字符串。
         /// </summary>
-        internal static string PathNotFoundException_Message {
+        public static string PathNotFoundException_Message {
             get {
                 return ResourceManager.GetString("PathNotFoundException.Message", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace StringFinder.Properties {
         /// <summary>
         ///   查找类似 打开文件夹 的本地化字符串。
         /// </summary>
-        internal static string ViewMenuItem_Text {
+        public static string ViewMenuItem_Text {
             get {
                 return ResourceManager.GetString("ViewMenuItem.Text", resourceCulture);
             }

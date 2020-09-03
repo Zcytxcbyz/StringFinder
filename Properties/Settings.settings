@@ -8,14 +8,11 @@
     <Setting Name="FormState" Type="System.Windows.Forms.FormWindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>
     </Setting>
-    <Setting Name="FormLocation" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="chItemWidthPro" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.2</Value>
     </Setting>
     <Setting Name="chFileWidthPro" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0.6</Value>
+      <Value Profile="(Default)">0.58</Value>
     </Setting>
     <Setting Name="chIndexWidthPro" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.2</Value>
@@ -28,6 +25,9 @@
     </Setting>
     <Setting Name="Encoding" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="FormLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
     </Setting>
   </Settings>
 </SettingsFile>
