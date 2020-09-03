@@ -31,7 +31,6 @@ namespace StringFinder
         private delegate void addData(ListViewItem item);
         private void mainForm_Load(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Reset();
             chItemWidthPro = Properties.Settings.Default.chItemWidthPro;
             chFileWidthPro = Properties.Settings.Default.chFileWidthPro;
             chIndexWidthPro = Properties.Settings.Default.chIndexWidthPro;
