@@ -130,5 +130,17 @@ namespace StringFinder.Properties {
                 this["FormLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FolderBrowserHistory {
+            get {
+                return ((string)(this["FolderBrowserHistory"]));
+            }
+            set {
+                this["FolderBrowserHistory"] = value;
+            }
+        }
     }
 }

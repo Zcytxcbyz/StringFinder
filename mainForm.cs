@@ -49,10 +49,12 @@ namespace StringFinder
         private void Open_Btn_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.SelectedPath = Properties.Settings.Default.FolderBrowserHistory;
             fbd.Description = resources.GetString("FolderBrowserDialog.Description");
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 Dirty_textBox.Text = fbd.SelectedPath;
+                Properties.Settings.Default.FolderBrowserHistory = fbd.SelectedPath;
             }
         }
         private void SearchButton_Click(object sender, EventArgs e)
